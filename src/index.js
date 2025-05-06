@@ -46,7 +46,7 @@ editorNamespace.on('connection', (socket) => {
         });
 
         watcher.on("all", (event, path) => {
-            console.log(event, path);
+            //console.log(event, path);
         });
     }
 
