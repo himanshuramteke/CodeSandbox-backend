@@ -68,12 +68,6 @@ export const handleContainerCreate = async (projectId, terminalSocket, req, tcpS
         await container.start()
 
         console.log('Container started');
-
-         // Below is the place where we upgrade the connection to websocket
-        // terminalSocket.handleUpgrade(req, tcpSocket, head, (establishedWSConn) => {
-        //     console.log("Connection upgraded to websocket");
-        //     terminalSocket.emit("connection", establishedWSConn, req, container);
-        // });
        
         return container;
         

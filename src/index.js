@@ -38,6 +38,7 @@ editorNamespace.on('connection', (socket) => {
     
     if(projectId) {
         var watcher = chokidar.watch(`./projects/${projectId}`, {
+            ignored: (path) => path.includes('node_modules'),
             persistent: true, /** Keeps the watcher in the running state till the time app is running  */
             awaitWriteFinish: {
                 stabilityThreshold: 2000 /** Ensures stability of files before triggering event */
@@ -46,7 +47,7 @@ editorNamespace.on('connection', (socket) => {
         });
 
         watcher.on("all", (event, path) => {
-            //console.log(event, path);
+            console.log(event, path);
         });
     }
 
