@@ -1,4 +1,4 @@
-# CodeSandbox-Backend
+# <h1 align="center">CodeSandbox-Backend</h1>
 
 CodeSandbox-Backend is a Node.js-based backend application designed to manage projects, containers, and terminal sessions. It provides APIs and WebSocket-based communication for creating, managing, and interacting with projects and their associated Docker containers.
 
@@ -74,6 +74,10 @@ src/
    ```bash
    npm run dev
    ```
+### Run the Terminal Server separately
+ ```bash
+   npx nodemon src/terminalApp.js
+   ```
 
 ## API Endpoints
 
@@ -82,12 +86,7 @@ src/
 - **`POST /projects`**: Create a new project.
 - **`GET /projects/:projectId/tree`**: Fetch the directory tree of a project.
 
-### Example Request
 
-To create a new project:
-```bash
-curl -X POST http://localhost:3000/api/v1/projects
-```
 
 ## WebSocket Events
 
@@ -124,3 +123,7 @@ curl -X POST http://localhost:3000/api/v1/projects
 - **Docker**: Containerization platform.
 - **Chokidar**: File watching library.
 - **Dockerode**: Docker API client for Node.js.
+
+---
+
+# [Check Frontend Code](https://github.com/himanshuramteke/CodeSandbox-frontend)
