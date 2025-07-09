@@ -48,18 +48,23 @@ export const handleContainerCreate = async (projectId, terminalSocket, req, tcpS
             ExposedPorts: {
                 '5173/tcp': {}
             },
-            Env: ['HOST=0.0.0.0'],
+            Env: [
+                'HOST=0.0.0.0',
+                "NODE_ENV=development",
+                "CHOKIDAR_USEPOLLING=true",
+            ],
             HostConfig: {
                 Binds: [ //mounting the project directory to the container
-                    `${process.cwd()}/projects/${projectId}:/home/sandbox/app`
+                    `${process.cwd()}/projects/${projectId}:/home/sandbox/app:delegated`
                 ],
                 PortBindings: {
-                    '5173/tcp': [
-                        {
+                    '5173/tcp': [{
                             HostPort: '0' //random port will be assigned by docker
-                        }
-                    ]
+                        }]
                 },
+                 // Add these for better file system sync
+                ExtraHosts: ["host.docker.internal:host-gateway"],
+                NetworkMode: 'bridge'
             }
         });
 
